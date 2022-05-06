@@ -1,0 +1,120 @@
+header {
+    margin: 4px 0;
+    padding: 4px 0;
+}
+
+header p{
+    font-size: 1.9rem;
+}
+
+.btn--container {
+    margin: 0 8px;
+    padding: 2px 0;
+}
+
+.btn {
+    margin: 0 6px;
+    font-size: 1.2rem;
+}
+
+#toggle--theme {
+    height: 28px;
+    border: 2px solid black;
+    font-size: 1rem;
+    border-radius: 30px;
+    margin: 0 2px;
+}
+
+.icon {
+    font-size: 1rem;
+    margin: 0px 3px;
+}
+
+.ball {
+    top: 2px;
+    left: 2px;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+}
+
+.toggle--dark {
+    transform: translateX(19px);
+}
+
+.modal {
+    min-height: 500px;
+    min-width: 380px;
+    max-height: 750px;
+    max-width: 750px;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    padding: 30px 30px;
+    border-radius: 5px;
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+}
+
+.modal h1 {
+    padding: 0 0 24px 0;
+    font-size: 1.8rem;
+}
+
+.modal p{
+    padding: 0px 4px 16px 4px;
+    font-size: 1rem;
+}
+
+.example--box {
+    height: 40px;
+    width: 40px;
+    border: 0.5px solid rgb(157, 157, 157);
+    margin: 0 1px;
+    font-size: 1.5rem;
+}
+
+.close-modal {
+    top: 1.2rem;
+    right: 1rem;
+    font-size: 2rem;
+}
+
+
+
+.message--container {
+    font-size: 1.2rem;
+    margin: 12px 0 12px 0;
+    height: 30px;
+}
+
+.message--container p {
+    padding: 4px 8px;
+}
+
+.game--container {
+    margin: 10px 0 0 0;
+}
+
+.game--row {
+    margin: 4px;
+}
+
+.letter--box {
+    height: 60px;
+    width: 60px;
+    border: 2px solid rgb(157, 157, 157);
+    margin: 0 2px;
+    font-size: 2rem;
+}
+
+.keyboard--key {
+    width: 32px;
+    height: 40px;
+    font-size: 1.1rem;
+    border-radius: 4px;
+    margin: 3px 3px;
+
+}
+
+#enter-key {
+    width: 70px;
+}

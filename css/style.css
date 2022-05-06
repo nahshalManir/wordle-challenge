@@ -1,0 +1,317 @@
+/* GLOBAL CSS */
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --font-color: #1a1a1a;
+    --background-color: #f7f7f7;
+    --keyboard-color: #e6e6e6;
+    --letter-box-color: #fff;
+    --ball-color: #090909;
+    --ball-background: #e6e6e6;
+    --transition--time: 0.6s;
+    --gray-overlay: #666;
+}
+
+.active--dark {
+    --font-color: #e6e6e6;
+    --background-color: #1a1a1a;
+    --keyboard-color: #666;
+    --letter-box-color: #222;
+    --ball-color: #f7f7f7;
+    --ball-background: #5e5e5e;
+    --modal-font-color: #ccc;
+    --gray-overlay: #3c3c3c;
+}
+
+
+body {
+    background-color: var(--background-color);
+    transition: all var(--transition--time) linear 0s;
+}
+
+.disable-select {
+    user-select: none;
+}
+
+
+/* HEADER */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    transition: inherit;
+    border-bottom: 2px solid var(--ball-background);
+}
+
+header p{
+    right: 100px;
+    justify-content: center;
+    font-size: 3.2rem;
+    color: var(--font-color);
+    font-family: 'Bebas Neue', sans-serif;
+    margin: 0 10px;
+    border-right: none;
+    transition: inherit;
+}
+
+.btn--container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 16px;
+    padding: 4px 0;
+    transition: inherit;
+}
+
+.btn {
+    background: none;
+    border: none;
+    margin: 0 12px;
+    font-size: 1.5rem;
+}
+
+.btn:hover, #toggle--theme{
+    cursor: pointer;
+}
+
+#toggle--theme {
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid black;
+    font-size: 1rem;
+    border-radius: 50px;
+    position: relative;
+    margin: 0 20px;
+    background-color: var(--ball-background);
+    transition: all var(--transition-time) ease 0s;
+}
+
+.icon {
+    font-size: 1rem;
+    margin: 0px 6px;
+}
+
+.fa-circle-question, .fa-arrow-rotate-left {
+    color: var(--font-color);
+    transition: inherit;
+}
+
+.ball {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    height: 22px;
+    width: 22px;
+    background-color: var(--ball-color);
+    border-radius: 50%;
+    transition: all var(--transition--time) ease 0s;
+}
+
+.toggle--dark {
+    transform: translateX(29px);
+}
+
+.fa-sun {
+    color: #ffa500;
+}
+
+.fa-moon {
+    color: yellow;
+}
+
+.hidden {
+    display: none;
+}
+
+/* MODAL */
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-height: 500px;
+    min-width: 500px;
+    max-height: 750px;
+    max-width: 750px;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    background-color: var(--background-color);
+    padding: 50px 50px;
+    border-radius: 5px;
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    color: var(--modal-font-color);
+    transition: inherit;
+}
+
+.modal h1 {
+    font-family: 'Vazirmatn', sans-serif;
+    color: var(--modal-font-color);
+    padding: 0 0 36px 0;
+}
+  
+.close-modal {
+    position: absolute;
+    top: 1.2rem;
+    right: 2rem;
+    font-size: 3rem;
+    color: var(--font-color);
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+  
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    z-index: 5;
+}
+
+.modal-content {
+    font-family: 'Roboto', sans-serif;
+}
+
+.modal p{
+    padding: 0px 4px 16px 4px;
+    color: var(--modal-font-color);
+}
+
+.example--box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border: 0.5px solid rgb(157, 157, 157);
+    margin: 0 1px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.4rem;
+    background-color: var(--letter-box-color);
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.15) inset;
+    transition: background-color var(--transition-time) linear 0s;
+}
+  
+
+
+/* GAME */
+
+.message--container, .guess--container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin: 0 0 12px 0;
+    height: 32px;
+    transition: all var(--transition--time) linear 0s;
+}
+
+.message--container p, .guess--container p {
+    background-color: var(--ball-background);
+    border-radius: 10px;
+    padding: 4px 8px;
+    font-family: 'Roboto', sans-serif;
+    color: var(--font-color);
+    transition: inherit;
+}
+
+.game {
+    margin: 20px 0 0 0;
+    display: flex;
+    justify-content: center;
+}
+
+.game--row {
+    display: flex;
+    margin: 4px;
+}
+
+.letter--box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 60px;
+    border: 2px solid rgb(157, 157, 157);
+    margin: 0 2px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 2rem;
+    color: var(--font-color);
+    background-color: var(--letter-box-color);
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.15) inset;
+    transition: all var(--transition--time) linear 0s;
+}
+
+.green--overlay {
+    background-color: #4f9e48 !important;
+    transition: background-color 0s linear 0.25s;
+}
+.yellow--overlay {
+    background-color: #c9b12a !important;
+    transition: background-color 0s linear 0.25s;
+}
+.gray--overlay {
+    background-color: var(--gray-overlay) !important;
+    transition: background-color 0s linear 0.25s;
+}
+
+.tile--flip {
+    animation: flip 0.5s linear 0s none;
+}
+
+@keyframes flip {
+    0%{
+        transform: rotateX(0deg);
+    }
+    50%{
+        transform: rotateX(90deg);
+    }
+    100%{
+        transform: rotateX(0deg);
+    }
+}
+
+/* KEYBOARD */
+
+.keyboard {
+    margin: 32px 0 0 0;
+    display: flex;
+    justify-content: center;
+}
+
+.keyboard--row {
+    display: flex;
+    justify-content: center;
+}
+
+.keyboard--key {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--keyboard-color);
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    color: var(--font-color);
+    border-radius: 4px;
+    margin: 4px 4px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    transition: all var(--transition--time) ease 0s;
+
+}
+
+#enter-key {
+    width: 70px;
+}
