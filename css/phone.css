@@ -90,10 +90,6 @@ header p{
     padding: 4px 8px;
 }
 
-.game--container {
-    margin: 10px 0 0 0;
-}
-
 .game--row {
     margin: 4px;
 }
@@ -106,9 +102,13 @@ header p{
     font-size: 2rem;
 }
 
+.keyboard{
+    width: 100vw;
+}
+
 .keyboard--key {
-    width: 32px;
-    height: 40px;
+    width: 8.5vw;
+    height: 48px;
     font-size: 1.1rem;
     border-radius: 4px;
     margin: 3px 3px;

@@ -33,7 +33,7 @@ let gameOver = false;
 let tempDisableAllInput = false;
 
 // Get random word using fetch API
-const options = {
+const guessOptions = {
 	method: 'GET',
 	headers: {
 		'X-RapidAPI-Host': 'random-words5.p.rapidapi.com',
@@ -41,10 +41,13 @@ const options = {
 	}
 };
 
-fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=1&wordLength=5', options)
-	.then(response => response.json())
-	.then(response => secretWord = response[0].toUpperCase())
-	.catch(err => console.error(err));
+const getRandomWord = async () => {
+    const res = await fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=1&wordLength=5', guessOptions);
+    const data = await res.json();
+    secretWord = data[0].toUpperCase();
+}
+
+getRandomWord();
 
 // Toggle light and dark theme
 toggleThemeBtn.addEventListener('click', () => {
@@ -61,6 +64,7 @@ btnOpenModal.addEventListener("click", () => {
     yellowHintTile.classList.add('tile--flip', 'yellow--overlay');
     greenHintTile.classList.add('tile--flip', 'green--overlay');
     tempDisableAllInput = true;
+    body.style.overflow = 'hidden';
 });
 
 // Close Modal
@@ -71,6 +75,7 @@ btnCloseModal.addEventListener("click", () => {
     yellowHintTile.classList.remove('tile--flip', 'yellow--overlay');
     greenHintTile.classList.remove('tile--flip', 'green--overlay');
     tempDisableAllInput = false;
+    body.style.overflow = 'initial';
 });
 
 // Add letter to tile
@@ -136,13 +141,6 @@ const highlightAnswer = (userAnswer) => {
         guess.push({ letter: tile.textContent, color: "gray" });
     });
 
-    guess.forEach(guess => {
-        if(checkSecretWord.includes(guess.letter)) {
-            guess.color = 'yellow';
-            checkSecretWord = checkSecretWord.replace(guess.letter, '');
-        }
-    });
-
     guess.forEach((guess, index) => {
         if(guess.letter === secretWord[index]) {
             guess.color = 'green';
@@ -150,15 +148,19 @@ const highlightAnswer = (userAnswer) => {
         }
     });
 
+    guess.forEach(guess => {
+        if(checkSecretWord.includes(guess.letter)) {
+            guess.color = 'yellow';
+            checkSecretWord = checkSecretWord.replace(guess.letter, '');
+        }
+    });
+
     const interval = 500;
-    userAnswer.forEach((letter, index) => {
-        const curTile = document.getElementById(
-            `row-${currentRow} tile-${index}`
-        );
+    rowTiles.forEach((tile, index) => {
         setTimeout(() => {
-            curTile.classList.add('tile--flip');
-            curTile.classList.add (`${guess[index].color}--overlay`);
-            document.getElementById(`${letter}`).classList.add(`${guess[index].color}--overlay`);
+            tile.classList.add('tile--flip');
+            tile.classList.add (`${guess[index].color}--overlay`);
+            document.getElementById(`${guess[index].letter}`).classList.add(`${guess[index].color}--overlay`);
         }, interval * index);
     });
 
@@ -186,8 +188,6 @@ const highlightAnswer = (userAnswer) => {
 // Check the submitted guess by user
 const checkAnswer = () => {
     if (currentTile < 5 || tempDisableAllInput) return;
-
-    const userAnswer = wordRows[currentRow].join("");
     highlightAnswer(wordRows[currentRow]);
 };
 
@@ -234,7 +234,7 @@ const resetGame = () => {
 
     displayMessage("Game has been reset");
     tempDisableReset();
-
+    getRandomWord();
     gameOver = false;
     tempDisableAllInput = false;
     currentRow = 0;
@@ -262,4 +262,3 @@ const resetGame = () => {
 
 // Button to reset the game
 resetGameBtn.addEventListener("click", resetGame);
-

@@ -226,10 +226,13 @@ header p{
     transition: inherit;
 }
 
-.game {
-    margin: 20px 0 0 0;
+.game{
     display: flex;
     justify-content: center;
+}
+
+.game--container {
+    margin:  10px 0 0 0;
 }
 
 .game--row {
@@ -253,16 +256,16 @@ header p{
     transition: all var(--transition--time) linear 0s;
 }
 
-.green--overlay {
-    background-color: #4f9e48 !important;
+.gray--overlay {
+    background-color: var(--gray-overlay) !important;
     transition: background-color 0s linear 0.25s;
 }
 .yellow--overlay {
     background-color: #c9b12a !important;
     transition: background-color 0s linear 0.25s;
 }
-.gray--overlay {
-    background-color: var(--gray-overlay) !important;
+.green--overlay {
+    background-color: #4f9e48 !important;
     transition: background-color 0s linear 0.25s;
 }
 
