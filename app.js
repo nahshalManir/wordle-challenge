@@ -141,16 +141,16 @@ const highlightAnswer = (userAnswer) => {
         guess.push({ letter: tile.textContent, color: "gray" });
     });
 
-    guess.forEach((guess, index) => {
-        if(guess.letter === secretWord[index]) {
-            guess.color = 'green';
+    guess.forEach(guess => {
+        if(checkSecretWord.includes(guess.letter)) {
+            guess.color = 'yellow';
             checkSecretWord = checkSecretWord.replace(guess.letter, '');
         }
     });
 
-    guess.forEach(guess => {
-        if(checkSecretWord.includes(guess.letter)) {
-            guess.color = 'yellow';
+    guess.forEach((guess, index) => {
+        if(guess.letter === secretWord[index]) {
+            guess.color = 'green';
             checkSecretWord = checkSecretWord.replace(guess.letter, '');
         }
     });
